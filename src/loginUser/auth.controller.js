@@ -1,7 +1,7 @@
 
 import { checkPassword, encrypt } from '../../utils/encrypt.js'
 import { generateJwt } from '../../utils/jwt.js'
-import User from '../user/user.model.js'
+import Client from '../client/client.model.js'
 
 
 //Register
@@ -10,13 +10,11 @@ export const register = async(req, res)=>{
         //Capturar los datos
         let data = req.body
         //Aquí van validaciones
-        let user = new User(data)
+        let user = new Client(data)
 
         //Encriptar la password
         user.password = await encrypt(user.password)
         //Guardar
-        //Rol predeterminado
-        user.role = 'CLIENT'
         await user.save()
         //Responder al usuario
         return res.send({message: `Registered successfully, can be logged with username: ${user.username}`})

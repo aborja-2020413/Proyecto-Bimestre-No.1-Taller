@@ -29,7 +29,7 @@ const productSchema = new Schema(
         },
         category: {
             type: Schema.Types.ObjectId,
-            ref: 'Category',  // 🔥 Referencia a la colección de categorías
+            ref: 'Category',  // Referencia a la colección de categorías
             required: [true, 'Category is required']
         }
     }

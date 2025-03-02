@@ -10,8 +10,7 @@ const administratorSchema = Schema(
         email: {
             type: String,
             required: [true, 'Email is required'],
-            unique: true,
-            //match: [/^\S+@\S+\.\S+$/, 'Invalid email format']
+            unique: true
         },
         password: {
             type: String,
@@ -20,7 +19,6 @@ const administratorSchema = Schema(
         role: {
             type: String,
             default: 'ADMIN',
-            required: [true, 'Role is required']
         },
         isActive: {
             type: Boolean,

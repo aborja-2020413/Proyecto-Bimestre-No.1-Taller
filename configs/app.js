@@ -6,7 +6,7 @@ import helmet from 'helmet' //SEGURIDAD HTTP
 import cors from 'cors' //ACCESO AL API
 import administratorRoutes from '../src/administrator/administrator.routes.js'
 import categoryRoutes from '../src/administrator/category/category.routes.js'
-import loginRoutes from '../src/auth/auth.routes.js'
+import loginUserRoutes from '../src/loginUser/auth.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -20,7 +20,7 @@ const configs = (app)=>{
 const routes = (app)=>{
     app.use('/v1/administrator', administratorRoutes)
     app.use('/v1/category', categoryRoutes)
-    app.use('/v1/login', loginRoutes)
+    app.use('/v1/login', loginUserRoutes)
 }
  
 
