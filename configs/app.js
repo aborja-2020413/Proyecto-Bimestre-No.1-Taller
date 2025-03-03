@@ -7,6 +7,8 @@ import cors from 'cors' //ACCESO AL API
 import administratorRoutes from '../src/administrator/administrator.routes.js'
 import categoryRoutes from '../src/administrator/category/category.routes.js'
 import loginUserRoutes from '../src/loginUser/auth.routes.js'
+import loginAdministratorRoutes from '../src/loginAdministrator/loginAdministrator.routes.js'
+import invoiceRoutes from '../src/Invoice/invoice.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -20,7 +22,9 @@ const configs = (app)=>{
 const routes = (app)=>{
     app.use('/v1/administrator', administratorRoutes)
     app.use('/v1/category', categoryRoutes)
-    app.use('/v1/login', loginUserRoutes)
+    app.use('/v1/loginClient', loginUserRoutes)
+    app.use('/v1/loginAdmin', loginAdministratorRoutes)
+    app.use('/v1/invoice', invoiceRoutes)
 }
  
 
@@ -36,6 +40,7 @@ export const initServer = async()=>{
         console.error('Server init failed', err)
     }
 }
+
 
 
 

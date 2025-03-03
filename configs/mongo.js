@@ -1,5 +1,6 @@
 //CONEXION A LA DB
 import mongoose from "mongoose";
+//import Category from '../src/administrator/category/category.model'
 
 export const connect = async()=>{
     try{
@@ -15,6 +16,7 @@ export const connect = async()=>{
         })
         mongoose.connection.once('open', ()=>{
             console.log('MongoDB | connected to database')  
+            //initializeDefaultCategory(); // Se ejecuta al abrir la conexión
         })
         mongoose.connection.on('reconnected', ()=>{
             console.log('MongoDB | reconnected to mongoDB')  
@@ -35,3 +37,24 @@ export const connect = async()=>{
     }
 }
 
+/*
+// Función para crear la categoría por defecto si no existe
+export const initializeDefaultCategory = async () => {
+    try {
+        const existingCategory = await Category.findOne({ name: "general" });
+
+        if (!existingCategory) {
+            const defaultCategory = new Category({
+                name: "general",
+                description: "Esta es la categoría por defecto para productos sin categoría."
+            });
+            await defaultCategory.save();
+            console.log("Categoría por defecto creada.");
+        } else {
+            console.log("La categoría por defecto ya existe.");
+        }
+    } catch (error) {
+        console.error("Error al crear la categoría por defecto:", error);
+    }
+};
+*/

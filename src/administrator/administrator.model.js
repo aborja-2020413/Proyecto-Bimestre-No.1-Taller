@@ -7,29 +7,24 @@ const administratorSchema = Schema(
             maxLength: [50, "Name can't exceed 50 characters"],
             required: [true, 'Name is required']
         },
-        email: {
+        username:{
             type: String,
-            required: [true, 'Email is required'],
+            required: [true, 'Username is required'],
             unique: true
         },
         password: {
             type: String,
             required: [true, 'Password is required']
         },
+        email: {
+            type: String,
+            required: [true, 'Email is required'],
+            unique: true
+        },
         role: {
             type: String,
             default: 'ADMIN',
-        },
-        isActive: {
-            type: Boolean,
-            default: true
-        },
-        createdProducts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Product'
-            }
-        ]
+        }
     }
 )
 

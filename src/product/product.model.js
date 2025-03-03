@@ -31,6 +31,11 @@ const productSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Category',  // Referencia a la colección de categorías
             required: [true, 'Category is required']
+        },
+        adminId: { // Se agrega el ID del administrador que creó el producto
+            type: Schema.Types.ObjectId,
+            ref: 'Administrator',
+            required: true
         }
     }
 );

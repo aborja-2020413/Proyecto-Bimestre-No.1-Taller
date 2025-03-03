@@ -1,17 +1,16 @@
-import Invoice from './invoice.model.js';
-import Product from '../Product/product.model.js';
-import Client from '../client/client.model.js';
-
+import Invoice from './invoice.model.js'
+import Product from '../product/product.model.js'
+import Client from '../client/client.model.js'
 
 
 // Crear una factura (validando stock)
 export const createInvoice = async (req, res) => {
     try {
-        const { userId, products, quantities, status } = req.body;
+        const { user, products, quantities, status } = req.body;
 
         // Verificar si el usuario existe
-        const user = await Client.findById(userId);
-        if (!user) {
+        const usEr = await Client.findById(user);
+        if (!usEr) {
             return res.status(404).json({ mensaje: 'Cliente no encontrado' });
         }
 
@@ -41,7 +40,7 @@ export const createInvoice = async (req, res) => {
 
         // Crear la factura
         const invoice = new Invoice({
-            user: userId,
+            user: user,
             products,
             quantities,
             total,
@@ -109,6 +108,23 @@ export const updateInvoice = async (req, res) => {
     }
 };
 
+// Ver facturas de un usuario específico
+export const getUserInvoices = async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        const invoices = await Invoice.find({ user: userId }).populate('products');
+        if (!invoices.length) {
+            return res.status(404).json({ mensaje: 'No hay facturas para este usuario' });
+        }
+
+        res.status(200).json(invoices);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 // Ver los productos detallados en una factura
 export const getInvoiceDetails = async (req, res) => {
     try {
@@ -125,3 +141,5 @@ export const getInvoiceDetails = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
