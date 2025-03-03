@@ -1,4 +1,5 @@
 import Product from '../product/product.model.js'
+import Client from './client.model.js'
 
 // Ver todos los productos
 export const getAllProducts = async (req, res) => {
@@ -79,3 +80,76 @@ export const getInvoiceDetails = async (req, res) => {
     }
 };
 */
+
+
+/*GESTION DE PERFIL*/
+// Editar perfil de usuario
+export const updateUserProfile = async (req, res) => {
+    try {
+        const { user } = req.params; // ID del usuario desde los parámetros
+        const { name, surname, username , email } = req.body; // Datos a actualizar
+
+        // Verificar si el usuario existe
+        const existingUser = await Client.findById(user);
+        if (!existingUser) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+
+        // Verificar si el email o username ya están en uso por otro usuario
+        if (email && email !== existingUser.email) {
+            const emailExists = await Client.findOne({ email });
+            if (emailExists) {
+                return res.status(400).json({ mensaje: 'El correo electrónico ya está en uso' });
+            }
+        }
+
+        if (username && username !== existingUser.username) {
+            const usernameExists = await Client.findOne({ username });
+            if (usernameExists) {
+                return res.status(400).json({ mensaje: 'El nombre de usuario ya está en uso' });
+            }
+        }
+
+        // Actualizar la información del usuario
+        existingUser.name = name || existingUser.name;
+        existingUser.surname = surname || existingUser.surname;
+        existingUser.username = username || existingUser.username;
+        existingUser.email = email || existingUser.email;
+
+        await existingUser.save(); // Guardar los cambios
+
+        res.status(200).json({ mensaje: 'Perfil actualizado con éxito', user: existingUser });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Eliminar cuenta de usuario
+export const deleteUserAccount = async (req, res) => {
+    try {
+        const { user } = req.params; // ID del usuario desde los parámetros
+        const { confirmation } = req.body; // Confirmación de eliminación
+
+        // Verificar si el usuario existe
+        const existingUser = await Client.findById(user);
+        if (!existingUser) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+
+        // Verificar confirmación
+        if (!confirmation || confirmation !== 'CONFIRM') {
+            return res.status(400).json({ mensaje: 'Se requiere confirmación para eliminar la cuenta' });
+        }
+
+        // Eliminar la cuenta del usuario
+        await Client.findByIdAndDelete(user);
+
+        res.status(200).json({ mensaje: 'Cuenta eliminada con éxito' });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+/*GESTION DE PERFIL*/

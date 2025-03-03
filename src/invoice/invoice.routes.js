@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createInvoice, updateInvoice, getUserInvoices,  getInvoiceDetails } from './invoice.controller.js'
+import { createInvoice, updateInvoice, getUserInvoices,  getInvoiceDetails, getPurchaseHistory } from './invoice.controller.js'
 import { validateJwt } from '../../middlewares/validate.jwt.js'
 
 
@@ -18,6 +18,7 @@ api.get('/findInvoice/:userId', [validateJwt], getUserInvoices);
 // Obtener los detalles de una factura específica
 api.get('/detailsInvoice/:id', [validateJwt], getInvoiceDetails);
 
+api.get('/history/:user', [validateJwt], getPurchaseHistory); // Ruta para ver historial de compras
 
 export default api;
 
