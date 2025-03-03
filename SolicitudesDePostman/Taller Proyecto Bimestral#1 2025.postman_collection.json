@@ -1,0 +1,1528 @@
+{
+	"info": {
+		"_postman_id": "c9c1129e-18af-4e98-afaa-1101129b9386",
+		"name": "Taller Proyecto Bimestral#1 2025",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37952106"
+	},
+	"item": [
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "Agregar Categoria",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "mascotas",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "productos para perros",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/category/addcategories",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"category",
+										"addcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver Categorias",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}} ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/category/allcategories",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"category",
+										"allcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Editar Categoria",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "mascotas",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "productos para mascotas",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/category/editcategories/67c4ab9e77e8886e2d0ec50e",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"category",
+										"editcategories",
+										"67c4ab9e77e8886e2d0ec50e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Categoria",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/category/deletecategories/67c4ac4f77e8886e2d0ec515",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"category",
+										"deletecategories",
+										"67c4ac4f77e8886e2d0ec515"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "Agregar Producto",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "peluche",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "jueguete para perro",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "40",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "sales",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c4acc277e8886e2d0ec51c",
+											"type": "text"
+										},
+										{
+											"key": "adminId",
+											"value": "67c4ab6877e8886e2d0ec50a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/addproducts",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"addproducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener todos los productos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener un producto en especifico",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products/67c4ad7c77e8886e2d0ec522",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products",
+										"67c4ad7c77e8886e2d0ec522"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Editar un producto",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "peluche",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "jueguete para gato",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "40",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "sales",
+											"value": "23",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c4acc277e8886e2d0ec51c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products/67c4ad7c77e8886e2d0ec522",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products",
+										"67c4ad7c77e8886e2d0ec522"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar un producto",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products/67c4ae8a77e8886e2d0ec528",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products",
+										"67c4ae8a77e8886e2d0ec528"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Productos agotados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products/status/out-of-stock",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products",
+										"status",
+										"out-of-stock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Productos más vendidos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/products/status/top-sellers",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"products",
+										"status",
+										"top-sellers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Agregar Cliente",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "carlos",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "gonzales",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "carlosMaster",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "carlosMater@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "987HH//**",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/addClient",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"addClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Editar rol al usuario",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "role",
+											"value": "CLIENT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/editRole/67c4b1980ef9548b209bde06",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"editRole",
+										"67c4b1980ef9548b209bde06"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Editar un cliente (solo administrador)",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "adminId",
+											"value": "67c4ab6877e8886e2d0ec50a",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "carlos",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Napurain",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "carlosMaster",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "carlosMater@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "988HH//**",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/editClient/67c4b1980ef9548b209bde06",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"editClient",
+										"67c4b1980ef9548b209bde06"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar un cliente (solo administrador)",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "67c4ab6877e8886e2d0ec50a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/administrator/deleteClient/67c4b1980ef9548b209bde06",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"administrator",
+										"deleteClient",
+										"67c4b1980ef9548b209bde06"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Funcionalidades de cliente",
+					"item": [
+						{
+							"name": "Editar usuario",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "pedro",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "mora",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "pedroNapurain",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "pedroNapurain@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/editProfile/67c4f74ee9469a65d552b5fd",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"editProfile",
+										"67c4f74ee9469a65d552b5fd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar usuario con confirmación",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "confirmation",
+											"value": "CONFIRM",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/deleteProfile/67c4f74ee9469a65d552b5fd",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"deleteProfile",
+										"67c4f74ee9469a65d552b5fd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ver productos",
+					"item": [
+						{
+							"name": "Obtener todos los productos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/allproducts",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"allproducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Productos más vendidos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/products/top-sellers",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"products",
+										"top-sellers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca producto en especifico",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "Name",
+											"value": "peluche2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/searchProduct",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"searchProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filtrar producto por categoría",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:1988/v1/Client/searchProducts/67c4ad0c77e8886e2d0ec51f",
+									"host": [
+										"localhost"
+									],
+									"port": "1988",
+									"path": [
+										"v1",
+										"Client",
+										"searchProducts",
+										"67c4ad0c77e8886e2d0ec51f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Iniciar sesión cliente",
+			"item": [
+				{
+					"name": "Crear/Agregar cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pedro",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "morales",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "pedroMorales",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pedroMorales@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "741BB//**",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/loginClient/addClient",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"loginClient",
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Iniciar sesión cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "pedroMorales",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "741BB//**",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/loginClient/addlogin",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"loginClient",
+								"addlogin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Iniciar sesión Administrador",
+			"item": [
+				{
+					"name": "Agregar/Crear Administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "juan",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "juanMontagua",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "456PP//**",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "juanMontagua@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/loginAdmin/addAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"loginAdmin",
+								"addAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Iniciar sesión Administrador",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "juanMontagua",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "456PP//**",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/loginAdmin/login",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"loginAdmin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Crear Factura",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "67c4c212aba3cd019924f352",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c4ad7c77e8886e2d0ec522",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c4c8f7801d1410d056db71",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "cancelada",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/invoice/createInvoice",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"invoice",
+								"createInvoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Factura",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "products",
+									"value": "67c4ad7c77e8886e2d0ec522",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c4c8f7801d1410d056db71",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "cancelada",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/invoice/updateInvoice/67c4f05c376ac97cd7424c14",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"invoice",
+								"updateInvoice",
+								"67c4f05c376ac97cd7424c14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener factura de un usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1988/v1/invoice/findInvoice/67c4c212aba3cd019924f352",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"invoice",
+								"findInvoice",
+								"67c4c212aba3cd019924f352"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos de una factura",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1988/v1/invoice/detailsInvoice/67c4f05c376ac97cd7424c14",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"invoice",
+								"detailsInvoice",
+								"67c4f05c376ac97cd7424c14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Historial de Compra de Usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1988/v1/invoice/history/67c4c212aba3cd019924f352",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"invoice",
+								"history",
+								"67c4c212aba3cd019924f352"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shopping Cart",
+			"item": [
+				{
+					"name": "Crear carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "67c4c212aba3cd019924f352",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c4ad7c77e8886e2d0ec522",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c4c8f7801d1410d056db71",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "quantities",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/ShoppingCart/addCart",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"ShoppingCart",
+								"addCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener carrito de un usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1988/v1/ShoppingCart/searchCart/67c4c212aba3cd019924f352",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"ShoppingCart",
+								"searchCart",
+								"67c4c212aba3cd019924f352"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto del carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c4c212aba3cd019924f352",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67c4ad7c77e8886e2d0ec522",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/ShoppingCart/removeCart",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"ShoppingCart",
+								"removeCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proceso de compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "67c4c212aba3cd019924f352",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/ShoppingCart/checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"ShoppingCart",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
