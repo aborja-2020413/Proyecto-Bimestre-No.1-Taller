@@ -9,6 +9,8 @@ import categoryRoutes from '../src/administrator/category/category.routes.js'
 import loginUserRoutes from '../src/loginUser/auth.routes.js'
 import loginAdministratorRoutes from '../src/loginAdministrator/loginAdministrator.routes.js'
 import invoiceRoutes from '../src/Invoice/invoice.routes.js'
+import clientRoutes from '../src/client/client.routes.js'
+import shoppingCartRoutes from '../src/shoppingCart/shoppingCart.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -25,6 +27,8 @@ const routes = (app)=>{
     app.use('/v1/loginClient', loginUserRoutes)
     app.use('/v1/loginAdmin', loginAdministratorRoutes)
     app.use('/v1/invoice', invoiceRoutes)
+    app.use('/v1/client', clientRoutes)
+    app.use('/v1/shoppingCart', shoppingCartRoutes)
 }
  
 
@@ -40,6 +44,7 @@ export const initServer = async()=>{
         console.error('Server init failed', err)
     }
 }
+
 
 
 

@@ -4,19 +4,16 @@ const clientSchema = Schema (
     {
         name:{
             type: String,
-            required: [true, 'Name is required'],
-            maxLength: [25, `Can't be overcome 25 characters`]
+            required: [true, 'Name is required']
         },
         surname:{
             type: String,
-            required: [true, 'Surname is required'],
-            maxLength: [25,  `Can't be overcome 25 characters`]
+            required: [true, 'Surname is required']
         },
         username:{
             type: String,
             required: [true, 'Username is required'],
-            unique: true,
-            maxLength: [15,  `Can't be overcome 15 characters`]
+            unique: true
         },
         email:{
             type: String,
@@ -24,9 +21,7 @@ const clientSchema = Schema (
         },
         password:{
             type: String,
-            required: [true, 'Password is required'],
-            minLength: [8, 'Password must be 8 characterers'],
-            maxLength: [100, `Can't be overcome 16 characterers`]
+            required: [true, 'Password is required']
         },
         role:{
             type: String,

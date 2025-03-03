@@ -6,7 +6,7 @@ import { login, register} from './auth.controller.js'
 const api = Router()
 
 //RUTAS PUBLICAS
-api.post('/register', register)
+api.post('/addClient', register)
 
 api.post('/addlogin', login)
 

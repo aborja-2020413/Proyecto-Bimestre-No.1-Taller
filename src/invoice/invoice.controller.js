@@ -143,3 +143,29 @@ export const getInvoiceDetails = async (req, res) => {
 };
 
 
+/*HISTORIAL DE COMPRA*/
+// Obtener historial de compras de un usuario
+export const getPurchaseHistory = async (req, res) => {
+    try {
+        const { user } = req.params; // Se recibe el ID del usuario por params
+
+        // Verificar si el usuario existe
+        const usEr = await Client.findById(user);
+        if (!usEr) {
+            return res.status(404).json({ mensaje: 'Cliente no encontrado' });
+        }
+
+        // Buscar todas las facturas del usuario
+        const invoices = await Invoice.find({ user }).populate('products');
+
+        // Verificar si el usuario tiene compras
+        if (invoices.length === 0) {
+            return res.status(404).json({ mensaje: 'No hay compras registradas para este usuario' });
+        }
+
+        res.status(200).json(invoices);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+/*HISTORIAL DE COMPRA*/
