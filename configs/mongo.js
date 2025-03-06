@@ -1,6 +1,6 @@
 //CONEXION A LA DB
 import mongoose from "mongoose";
-//import Category from '../src/administrator/category/category.model'
+import Category from '../src/administrator/category/category.model.js'
 
 export const connect = async()=>{
     try{
@@ -16,7 +16,7 @@ export const connect = async()=>{
         })
         mongoose.connection.once('open', ()=>{
             console.log('MongoDB | connected to database')  
-            //initializeDefaultCategory(); // Se ejecuta al abrir la conexión
+            initializeDefaultCategory(); // Se ejecuta al abrir la conexión
         })
         mongoose.connection.on('reconnected', ()=>{
             console.log('MongoDB | reconnected to mongoDB')  
@@ -37,7 +37,7 @@ export const connect = async()=>{
     }
 }
 
-/*
+
 // Función para crear la categoría por defecto si no existe
 export const initializeDefaultCategory = async () => {
     try {
@@ -57,4 +57,5 @@ export const initializeDefaultCategory = async () => {
         console.error("Error al crear la categoría por defecto:", error);
     }
 };
-*/
+
+

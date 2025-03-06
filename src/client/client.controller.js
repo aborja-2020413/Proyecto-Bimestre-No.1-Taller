@@ -125,11 +125,11 @@ export const updateUserProfile = async (req, res) => {
     }
 };
 
-// Eliminar cuenta de usuario
-export const deleteUserAccount = async (req, res) => {
+// Dar de baja una cuenta de usuario
+export const deactivateUserAccount = async (req, res) => {
     try {
         const { user } = req.params; // ID del usuario desde los parámetros
-        const { confirmation } = req.body; // Confirmación de eliminación
+        const { confirmation } = req.body; // Confirmación de baja
 
         // Verificar si el usuario existe
         const existingUser = await Client.findById(user);
@@ -139,17 +139,16 @@ export const deleteUserAccount = async (req, res) => {
 
         // Verificar confirmación
         if (!confirmation || confirmation !== 'CONFIRM') {
-            return res.status(400).json({ mensaje: 'Se requiere confirmación para eliminar la cuenta' });
+            return res.status(400).json({ mensaje: 'Se requiere confirmación para dar de baja la cuenta' });
         }
 
-        // Eliminar la cuenta del usuario
-        await Client.findByIdAndDelete(user);
+        // Cambiar el status del usuario a false
+        existingUser.status = false;
+        await existingUser.save();
 
-        res.status(200).json({ mensaje: 'Cuenta eliminada con éxito' });
-
+        res.status(200).json({ mensaje: 'Cuenta dada de baja con éxito' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-
 /*GESTION DE PERFIL*/

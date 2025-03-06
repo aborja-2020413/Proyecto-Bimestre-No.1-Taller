@@ -1,7 +1,7 @@
 
 import {Router} from 'express'
 import { addProduct, getAllProducts, getProductById, editProduct, deleteProduct, getOutOfStockProducts, getTopSellers, 
-    UserRegister, /*AdministratorRegister*/ updateUserRole, updateUser, deleteUser } from './administrator.controller.js'
+    UserRegister, /*AdministratorRegister*/ updateUserRole, updateUser, deactivateUser } from './administrator.controller.js'
 import { validateJwt } from '../../middlewares/validate.jwt.js'
 
 const api = Router()
@@ -33,7 +33,7 @@ api.put('/editRole/:id', [validateJwt], updateUserRole);
 // Ruta para actualizar un cliente (solo administradores pueden editar clientes)
 api.put('/editClient/:id', [validateJwt], updateUser);
 // Ruta para eliminar un usuario (solo administradores pueden eliminar clientes o administradores)
-api.delete('/deleteClient/:id', [validateJwt], deleteUser);
+api.delete('/deleteClient/:id', [validateJwt], deactivateUser);
 /*GESTION DE USUARIOS*/
 
 export default api;

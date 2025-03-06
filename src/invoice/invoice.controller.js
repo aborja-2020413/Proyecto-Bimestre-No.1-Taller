@@ -3,46 +3,39 @@ import Product from '../product/product.model.js'
 import Client from '../client/client.model.js'
 
 
-// Crear una factura (validando stock)
 export const createInvoice = async (req, res) => {
     try {
         const { user, products, quantities, status } = req.body;
 
-        // Verificar si el usuario existe
-        const usEr = await Client.findById(user);
-        if (!usEr) {
-            return res.status(404).json({ mensaje: 'Cliente no encontrado' });
-        }
+        // Convertir a arrays si no lo son
+        const productsArray = Array.isArray(products) ? products : [products];
+        const quantitiesArray = Array.isArray(quantities) ? quantities : [quantities];
 
-        // Validar que productos y cantidades tengan el mismo tamaño
-        if (products.length !== quantities.length) {
+        if (productsArray.length !== quantitiesArray.length) {
             return res.status(400).json({ mensaje: 'Los productos y cantidades deben coincidir' });
         }
 
         let total = 0;
 
-        // Validar stock y calcular total
-        for (let i = 0; i < products.length; i++) {
-            const product = await Product.findById(products[i]);
+        for (let i = 0; i < productsArray.length; i++) {
+            const product = await Product.findById(productsArray[i]);
             if (!product) {
-                return res.status(404).json({ mensaje: `Producto con ID ${products[i]} no encontrado` });
+                return res.status(404).json({ mensaje: `Producto con ID ${productsArray[i]} no encontrado` });
             }
-            if (product.stock < quantities[i]) {
+            if (product.stock < quantitiesArray[i]) {
                 return res.status(400).json({ mensaje: `Stock insuficiente para el producto ${product.name}` });
             }
 
-            total += product.price * quantities[i];
+            total += product.price * quantitiesArray[i];
 
-            // Reducir stock
-            product.stock -= quantities[i];
+            product.stock -= quantitiesArray[i];
             await product.save();
         }
 
-        // Crear la factura
         const invoice = new Invoice({
-            user: user,
-            products,
-            quantities,
+            user,
+            products: productsArray,
+            quantities: quantitiesArray,
             total,
             status
         });

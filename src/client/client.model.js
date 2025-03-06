@@ -26,6 +26,10 @@ const clientSchema = Schema (
         role:{
             type: String,
             default: "CLIENT"
+        },
+        status: { 
+            type: Boolean, 
+            default: true 
         }
     }
 )

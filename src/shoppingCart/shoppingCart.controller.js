@@ -141,7 +141,7 @@ export const removeProductFromCart = async (req, res) => {
     }
 };
 
-/*
+
 // Limpiar el carrito (vaciar todo el carrito)
 export const clearCart = async (req, res) => {
     const { userId } = req.body;
@@ -164,7 +164,7 @@ export const clearCart = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-*/
+
 
 /*PROCESO DE COMPRA*/
 export const checkout = async (req, res) => {

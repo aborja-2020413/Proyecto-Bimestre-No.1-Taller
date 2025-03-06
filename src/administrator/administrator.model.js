@@ -24,6 +24,10 @@ const administratorSchema = Schema(
         role: {
             type: String,
             default: 'ADMIN',
+        },
+        status: { 
+            type: Boolean, 
+            default: true 
         }
     }
 )

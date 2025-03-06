@@ -156,7 +156,7 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "localhost:1988/v1/category/deletecategories/67c4ac4f77e8886e2d0ec515",
+									"raw": "localhost:1988/v1/category/deletecategories/67c90af4a144b21ebbe00bca",
 									"host": [
 										"localhost"
 									],
@@ -165,7 +165,7 @@
 										"v1",
 										"category",
 										"deletecategories",
-										"67c4ac4f77e8886e2d0ec515"
+										"67c90af4a144b21ebbe00bca"
 									]
 								}
 							},
@@ -774,7 +774,7 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:1988/v1/Client/deleteProfile/67c4f74ee9469a65d552b5fd",
+									"raw": "localhost:1988/v1/Client/deleteProfile/67c4c212aba3cd019924f352",
 									"host": [
 										"localhost"
 									],
@@ -783,7 +783,7 @@
 										"v1",
 										"Client",
 										"deleteProfile",
-										"67c4f74ee9469a65d552b5fd"
+										"67c4c212aba3cd019924f352"
 									]
 								}
 							},
@@ -1164,7 +1164,7 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "67c4c212aba3cd019924f352",
+									"value": "67c9117cb291979a579c48f7",
 									"type": "text"
 								},
 								{
@@ -1179,12 +1179,12 @@
 								},
 								{
 									"key": "quantities",
-									"value": "5",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "quantities",
-									"value": "7",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -1386,7 +1386,7 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "67c4c212aba3cd019924f352",
+									"value": "67c9117cb291979a579c48f7",
 									"type": "text"
 								},
 								{
@@ -1517,6 +1517,42 @@
 								"v1",
 								"ShoppingCart",
 								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limpiar carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c9117cb291979a579c48f7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1988/v1/ShoppingCart/clearCart",
+							"host": [
+								"localhost"
+							],
+							"port": "1988",
+							"path": [
+								"v1",
+								"ShoppingCart",
+								"clearCart"
 							]
 						}
 					},

@@ -183,6 +183,7 @@ export const updateUser = async (req, res) => {
     }
 };
 
+/*
 // Eliminar usuario (solo administradores pueden eliminar a otros administradores, clientes solo pueden eliminarse a sí mismos)
 export const deleteUser = async (req, res) => {
     try {
@@ -222,7 +223,41 @@ export const deleteUser = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+*/
 
+// Dar de baja a un usuario (solo administradores pueden dar de baja a otros administradores, clientes solo pueden darse de baja a sí mismos)
+export const deactivateUser = async (req, res) => {
+    try {
+        const { id } = req.params; // ID del usuario a dar de baja (enviado en la ruta)
+        const { userId } = req.body; // ID del usuario que realiza la solicitud (enviado en el body)
+
+        // Buscar al usuario solicitante (puede ser Admin o Client)
+        const usuarioSolicitante = await Administrator.findById(userId) || await Client.findById(userId);
+        if (!usuarioSolicitante) {
+            return res.status(404).json({ mensaje: 'Usuario solicitante no encontrado' });
+        }
+
+        // Buscar al usuario a dar de baja (puede ser Admin o Client)
+        let usuario = await Administrator.findById(id) || await Client.findById(id);
+        if (!usuario) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+
+        // Validación de permisos:
+        // Si el usuario solicitante es un cliente, solo puede darse de baja a sí mismo
+        if (usuarioSolicitante.role === 'CLIENT' && usuarioSolicitante.id !== id) {
+            return res.status(403).json({ mensaje: 'Los clientes solo pueden darse de baja a sí mismos' });
+        }
+
+        // Cambiar el status del usuario a false en el modelo correspondiente
+        usuario.status = false;
+        await usuario.save();
+
+        res.status(200).json({ mensaje: 'Usuario dado de baja exitosamente' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 
 

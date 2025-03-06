@@ -65,6 +65,11 @@ export const deleteCategory = async (req, res) => {
             return res.status(404).json({ message: 'Category not found' });
         }
 
+        // Verificar si la categoría a eliminar es la categoría por defecto "general"
+        if (category.name.toLowerCase() === 'general') {
+            return res.status(400).json({ message: 'La categoría predeterminada "general" no se puede eliminar'});
+        }
+
         // Buscar la categoría predeterminada (ejemplo: "General")
         const defaultCategory = await Category.findOne({ name: 'general' });
         if (!defaultCategory) {
@@ -73,8 +78,8 @@ export const deleteCategory = async (req, res) => {
 
         // Actualizar productos que pertenecían a la categoría eliminada
         await Product.updateMany(
-            { category: category._id },  // ✅ Filtramos por el ID de la categoría
-            { $set: { category: defaultCategory._id } }  // ✅ Asignamos el ID de la categoría "General"
+            { category: category._id },  //Filtramos por el ID de la categoría
+            { $set: { category: defaultCategory._id } }  //Asignamos el ID de la categoría "General"
         );
 
         // Eliminar la categoría

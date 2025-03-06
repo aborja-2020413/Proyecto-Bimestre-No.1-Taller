@@ -1,6 +1,6 @@
 import {Router} from 'express'
 
-import { addProductToCart, getCart,  removeProductFromCart, checkout } from './shoppingCart.controller.js';
+import { addProductToCart, getCart,  removeProductFromCart, checkout, clearCart } from './shoppingCart.controller.js';
 
 const api = Router()
 
@@ -21,9 +21,8 @@ api.post('/checkout', checkout);
 api.put('/update-quantity', updateProductQuantity);
 */
 
-/*
 // Ruta para vaciar el carrito de un usuario
-api.delete('/clear', clearCart);
-*/
+api.delete('/clearCart', clearCart);
+
 
 export default api;
